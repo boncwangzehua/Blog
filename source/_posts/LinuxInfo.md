@@ -27,3 +27,7 @@ tail -f catalina.out
 ```
 ./shutdown.sh
 ```
+6.查看进程运行状态
+```
+ps -ef | grep tomcat //查看所有tomcat的运行状态
+```
