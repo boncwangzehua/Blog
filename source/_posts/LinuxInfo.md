@@ -31,3 +31,51 @@ tail -f catalina.out
 ```
 ps -ef | grep tomcat //查看所有tomcat的运行状态
 ```
+7.压缩命令：
+
+　　命令格式：`tar  -zcvf   压缩文件名.tar.gz   被压缩文件名`
+
+ 可先切换到当前目录下。压缩文件名和被压缩文件名都可加入路径。
+
+ 
+
+8.解压缩命令：
+	
+1.解压.tar.gz包
+　　命令格式：tar  -zxvf   压缩文件名.tar.gz
+2.解压 zip包
+	命令格式 unzip 压缩文件名.zip
+
+　　解压缩后的文件只能放在当前的目录。
+  
+ 当运行startup.sh时 如果报错为 
+ 
+ ```
+ Neither the java_home nor the jre_home environment variable is defined
+ ```
+ 
+ linux配置java环境
+ 
+ 1.下载linux下的jdk包。放到/usr/local下
+ 
+ 2.解压jdk包
+ 
+ 3.编辑 /etc/profile文件`sudo vim etc/profile` 在文件最后加上如下代码
+ ```
+ JAVA_HOME=/usr/java/jdk1.8.0_151 //修改为自己相应的目录
+
+ PATH=$JAVA_HOME/bin:$PATH
+
+ CLASSPATH=$JAVA_HOME/jre/lib/ext:$JAVA_HOME/lib/tools.jar
+
+ export PATH JAVA_HOME CLASSPATH
+ ```
+ 
+ 编辑文件 /usr/local/tomcat/bin/catalina.sh (根据你自己的jdk路径进行修改) 在文件的正文开头，即正式代码前，大概在99行添加如下代码
+ 
+ ```
+export JAVA_HOME=/usr/local/jdk
+export JRE_HOME=/usr/local/jdk/jre
+ ```
+ 
+ 
